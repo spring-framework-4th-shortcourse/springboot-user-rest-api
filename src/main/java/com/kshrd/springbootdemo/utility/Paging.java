@@ -1,5 +1,7 @@
 package com.kshrd.springbootdemo.utility;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @SuppressWarnings("unused")
 public class Paging {
 	
@@ -15,9 +17,12 @@ public class Paging {
 	private int pagesToShow;
 	private int startPage;
 	private int endPage;
-
+	@JsonIgnore
 	private int offset;
 
+	//for data table
+	private int draw;
+	
 	public Paging() {
 		this(1, 2, 0, 0, 3);
 	}
@@ -107,6 +112,13 @@ public class Paging {
 			startPage = page - halfPagesToShow;
 			endPage = page + halfPagesToShow;
 		}
+	}
+	
+	public int getDraw() {
+		return draw;
+	}
+	public void setDraw(int draw) {
+		this.draw = draw;
 	}
 	@Override
 	public String toString() {
